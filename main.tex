@@ -1,0 +1,172 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{fullpage}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage[table]{xcolor}
+
+\title{Oz Programming: Syntax cheatsheet}
+\author{Felten Florian}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+
+\lstset{ %
+  	backgroundcolor=\color{white},   % choose the background color
+  	basicstyle=\ttfamily\small,        % size of fonts used for the code
+  	breaklines=true,                 % automatic line breaking only at whitespace
+  	captionpos=b,                    % sets the caption-position to bottom
+  	commentstyle=\color{mygray},    % comment style
+  	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  	keywordstyle=\color{blue},       % keyword style
+  	stringstyle=\color{mygreen}    % string literal style
+	}
+	
+%Doesn't work
+%\lstset{morekeywords={<, =<, >, >=, ==, \=}}
+
+\lstnewenvironment{oz}
+  {\lstset{language=oz}}
+  {}
+
+
+
+\begin{document}
+
+\maketitle
+
+\begin{multicols}{2}
+
+\section{Operators}
+
+\begin{tabular}{l r}
+\toprule[0.2em]
+\multicolumn{1}{l}{\textbf{Operators}} & \textbf{Meaning}\\
+\midrule
+
+%%%%%
+\multicolumn{2}{c}{\textbf{Booleans expressions and operators}}\\
+\begin{oz}
+ false
+\end{oz}
+ &\\
+ 
+\begin{oz}
+ true
+\end{oz}
+ &\\
+ 
+\begin{oz}
+ andthen
+\end{oz}
+ &logical and \\
+ 
+\begin{oz}
+ orelse
+\end{oz}
+ &logical or\\
+ 
+\begin{oz}
+ ==
+\end{oz}
+ &logical equality\\
+ 
+\begin{oz}
+ \=
+\end{oz}
+ &logical inequality\\
+ 
+\begin{oz}
+ {Not [Your Expression]}
+\end{oz}
+ &logical not\\[0.4em]
+ 
+ 
+%%%%% 
+\multicolumn{2}{c}{\textbf{Comparison operators}}\\
+
+\begin{oz}
+ <
+\end{oz}
+ &less than\\
+ 
+\begin{oz}
+ =<
+\end{oz}
+ &less than or equal to\\
+ 
+\begin{oz}
+ >
+\end{oz}
+ &greater than\\
+ 
+\begin{oz}
+ >=
+\end{oz}
+ &greater than or equal to\\
+
+
+%%%%% 
+\multicolumn{2}{c}{\textbf{Arithmetic operators}}\\
+\begin{oz}
+ +
+\end{oz}
+ &addition\\
+ 
+\begin{oz}
+ -
+\end{oz}
+ &subtraction\\
+ 
+\begin{oz}
+ *
+\end{oz}
+ &multiplication\\
+ 
+\begin{oz}
+ /
+\end{oz}
+ &division (for floating point numbers)\\
+ 
+\begin{oz}
+ div
+\end{oz}
+ &division (for integers)\\
+ 
+\begin{oz}
+ mod
+\end{oz}
+ &modulo\\
+ 
+\begin{oz}
+ {Pow A B}
+\end{oz}
+ &$A^{B}$\\
+ 
+ \begin{oz}
+ {Abs A}
+\end{oz}
+ &absolute value of A\\
+
+
+
+ 
+
+
+
+
+
+
+
+
+\end{tabular}
+
+
+
+
+\end{multicols}
+\end{document}
