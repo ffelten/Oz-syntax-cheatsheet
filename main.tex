@@ -7,10 +7,19 @@
 \usepackage{color}
 \usepackage{longtable}
 \usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
 \usepackage{listings}
 \usepackage[table]{xcolor}
 
-\title{Oz Programming: Basic syntax cheatsheet}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Last compiled: \today}
+\lhead{Université Catholique de Louvain}
+\rfoot{\thepage}
+\cfoot{Florian Felten}
+
+%\title{Oz Programming: Basic syntax cheatsheets}
 \author{Felten Florian}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
@@ -27,6 +36,7 @@
   	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
   	keywordstyle=\color{blue},       % keyword style
   	stringstyle=\color{mygreen},    % string literal style
+  	showstringspaces=false
 %doesn't work  	morekeywords={<, =<, >, >=, ==, \=, @, :=}
 	}
 
@@ -38,7 +48,13 @@
 
 \begin{document}
 
-\maketitle
+\vspace*{2em}
+\begin{center} % Title
+	{\Large Oz Programming: Basic syntax cheatsheets}
+\end{center}
+
+This document is a non-exhaustive reminder of the syntax of the Oz programming language. It is always possible to improve it and your help is therefore welcome. Source code and the latest version of the pdf can be found at the following address: \url{https://github.com/el-nounou/Oz-syntax-cheatsheet}
+%TODO Change the url (other github)
 
 \begin{longtable}{l r}
 \toprule[0.2em]
