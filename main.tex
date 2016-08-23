@@ -5,6 +5,7 @@
 \usepackage{multicol}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{listings}
 \usepackage[table]{xcolor}
@@ -39,134 +40,215 @@
 
 \maketitle
 
-\begin{multicols}{2}
-
 \section{Operators}
 
-\begin{tabular}{l r}
+\begin{longtable}{l r}
 \toprule[0.2em]
 \multicolumn{1}{l}{\textbf{Operators}} & \textbf{Meaning}\\
 \midrule
 
+
+ %%%%% 
+\multicolumn{2}{c}{\textbf{Basic statements}}\\
+
+\begin{oz}
+Var = ...
+\end{oz}
+&variable assignment\\
+
+\begin{oz}
+declare Var 
+\end{oz}
+&global declaration of Var\\
+ 
+\begin{oz}
+local Var in 
+	...
+end
+\end{oz}
+&local declaration\\
+ 
+ 
+\begin{oz}
+fun {FunName Arg1 ... ArgN}
+	...
+end
+\end{oz}
+&function declaration\\
+ 
+\begin{oz}
+proc {ProcName Arg1 ... ArgN}
+	...
+end
+\end{oz}
+&procedure declaration\\
+
+\begin{oz}
+if Condition then
+	...
+elseif Condition2 then 
+	...
+else
+	...
+end
+\end{oz}
+&if \dots else if \dots else \dots \\
+ 
+ 
+\begin{oz}
+case Var of Pattern_1 then ...
+[] Pattern_2 then ...
+else ...
+end
+\end{oz}
+&pattern matching \\[0.4em]
+
+
+
 %%%%%
 \multicolumn{2}{c}{\textbf{Booleans expressions and operators}}\\
 \begin{oz}
- false
+false 
 \end{oz}
- &\\
+&\\
  
 \begin{oz}
- true
+true
 \end{oz}
- &\\
+&\\
  
 \begin{oz}
- andthen
+andthen
 \end{oz}
- &logical and \\
+&logical and \\
  
 \begin{oz}
- orelse
+orelse
 \end{oz}
- &logical or\\
+&logical or\\
  
 \begin{oz}
- ==
+==
 \end{oz}
- &logical equality\\
+&logical equality\\
  
 \begin{oz}
- \=
+\=
 \end{oz}
- &logical inequality\\
+&logical inequality\\
  
 \begin{oz}
- {Not [Your Expression]}
+{Not [Your Expression]}
 \end{oz}
- &logical not\\[0.4em]
+&logical not\\[0.4em]
  
  
 %%%%% 
 \multicolumn{2}{c}{\textbf{Comparison operators}}\\
 
 \begin{oz}
- <
+<
 \end{oz}
- &less than\\
+&less than\\
  
 \begin{oz}
- =<
+=<
 \end{oz}
- &less than or equal to\\
+&less than or equal to\\
  
 \begin{oz}
- >
+>
 \end{oz}
- &greater than\\
+&greater than\\
  
 \begin{oz}
- >=
+>=
 \end{oz}
- &greater than or equal to\\
+&greater than or equal to\\[0.4em]
 
 
 %%%%% 
 \multicolumn{2}{c}{\textbf{Arithmetic operators}}\\
 \begin{oz}
- +
++
 \end{oz}
- &addition\\
+&addition\\
  
 \begin{oz}
- -
+-
 \end{oz}
- &subtraction\\
+&subtraction\\
  
 \begin{oz}
- *
+*
 \end{oz}
- &multiplication\\
+&multiplication\\
  
 \begin{oz}
- /
+/
 \end{oz}
- &division (for floating point numbers)\\
+&division (for floating point numbers)\\
  
 \begin{oz}
- div
+div
 \end{oz}
- &division (for integers)\\
+&division (for integers)\\
  
 \begin{oz}
- mod
+mod
 \end{oz}
- &modulo\\
+&modulo\\
  
 \begin{oz}
- {Pow A B}
+{Pow A B}
 \end{oz}
- &$A^{B}$\\
+&$A^{B}$\\
  
- \begin{oz}
- {Abs A}
+\begin{oz}
+{Abs A}
 \end{oz}
- &absolute value of A\\
+&absolute value of A\\
 
-
-
+\begin{oz}
+~
+\end{oz}
+&unary negation\\[0.4em]
  
 
 
+ %%%%% 
+\multicolumn{2}{c}{\textbf{Data structures}}\\
+
+\begin{oz}
+X = {NewCell Y}
+\end{oz}
+&creates a new cell (multiple assignment variable) \\
+
+\begin{oz}
+@X
+\end{oz}
+& returns the cell's current content\\
+
+\begin{oz}
+X := Z
+\end{oz}
+&changes the content of the cell \\[0.4em]
+
+
+ %%%%% 
+\multicolumn{2}{c}{\textbf{Exceptions handling}}\\
+
+\begin{oz}
+raise E end
+\end{oz}
+&throws an exception E \\
+
+\begin{oz}
+try ... catch X then ... end
+\end{oz}
+&catches a raised exception\\
+\end{longtable}
 
 
 
-
-
-
-\end{tabular}
-
-
-
-
-\end{multicols}
 \end{document}
