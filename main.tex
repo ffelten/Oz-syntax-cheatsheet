@@ -10,28 +10,28 @@
 \usepackage{listings}
 \usepackage[table]{xcolor}
 
-\title{Oz Programming: Syntax cheatsheet}
+\title{Oz Programming: Basic syntax cheatsheet}
 \author{Felten Florian}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 
-\lstset{ %
-  	backgroundcolor=\color{white},   % choose the background color
+
+\lstdefinestyle{myOz}{
+	language=oz,
+	backgroundcolor=\color{white},   % choose the background color
   	basicstyle=\ttfamily\small,        % size of fonts used for the code
   	breaklines=true,                 % automatic line breaking only at whitespace
   	captionpos=b,                    % sets the caption-position to bottom
   	commentstyle=\color{mygray},    % comment style
   	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
   	keywordstyle=\color{blue},       % keyword style
-  	stringstyle=\color{mygreen}    % string literal style
+  	stringstyle=\color{mygreen},    % string literal style
+%doesn't work  	morekeywords={<, =<, >, >=, ==, \=, @, :=}
 	}
-	
-%Doesn't work
-%\lstset{morekeywords={<, =<, >, >=, ==, \=}}
 
 \lstnewenvironment{oz}
-  {\lstset{language=oz}}
+  {\lstset{style=myOz}}
   {}
 
 
@@ -72,14 +72,14 @@ fun {FunName Arg1 ... ArgN}
 	...
 end
 \end{oz}
-&function declaration\\
+&function definition\\
  
 \begin{oz}
 proc {ProcName Arg1 ... ArgN}
 	...
 end
 \end{oz}
-&procedure declaration\\
+&procedure definition\\
 
 \begin{oz}
 if Condition1 then
@@ -108,12 +108,12 @@ end
 \begin{oz}
 false 
 \end{oz}
-&\\
+&false value\\
  
 \begin{oz}
 true
 \end{oz}
-&\\
+&true value\\
  
 \begin{oz}
 andthen
@@ -218,20 +218,88 @@ mod
 \multicolumn{2}{c}{\textbf{Data structures}}\\
 
 \begin{oz}
+S = "A string"
+\end{oz}
+& string declaration\\
+
+\begin{oz}
+A = hELLO
+\end{oz}
+& atom declaration\\
+
+\begin{oz}
+A = 'An atom'
+\end{oz}
+& same (with uppercase first letter and space)\\
+
+
+
+\begin{oz}
+X = label(feature1:Field1 
+		... 
+	  featureN:FieldN)
+\end{oz}
+&record structure \\
+
+\begin{oz}
+R.feature
+\end{oz}
+&access to the record's fields\\
+
+\begin{oz}
+T = 1#2#3
+\end{oz}
+& common operator (T = '\#'(1:1 2:2 3:3))\\
+
+\begin{oz}
+L = '|'(1 '|'(2 nil))
+\end{oz}
+& list structure\\
+
+\begin{oz}
+L = 1|2|nil
+\end{oz}
+& another way to declare a list\\
+
+\begin{oz}
+L = [1 2]
+\end{oz}
+& syntactic sugar for list declaration\\
+
+\begin{oz}
 X = {NewCell Y}
 \end{oz}
-&creates a new cell (multiple assignment variable) \\
+&cell creation (multiple assignment variable) \\
 
 \begin{oz}
 @X
 \end{oz}
-& returns the cell's current content\\
+& access to the cell's current content\\
 
 \begin{oz}
 X := Z
 \end{oz}
 &changes the content of the cell \\[0.4em]
 
+ %%%%% 
+\multicolumn{2}{c}{\textbf{Object-oriented programming}}\\
+
+\begin{oz}
+class AClass
+	attr a1 ... an
+	meth init(Arg) ... end
+	meth m1 ... end
+		...
+	meth mn(Arg) ... end
+end
+\end{oz}
+&class definition\\
+
+\begin{oz}
+X = {New AClass init('arg')}
+{X m1}
+\end{oz}
+&object creation and use\\[0.4em]
 
  %%%%% 
 \multicolumn{2}{c}{\textbf{Exceptions handling}}\\
@@ -244,7 +312,16 @@ raise E end
 \begin{oz}
 try ... catch X then ... end
 \end{oz}
-&catches a raised exception\\
+&catches a raised exception\\[0.4em]
+
+
+%%%%% 
+\multicolumn{2}{c}{\textbf{Concurrent programming}}\\
+
+\begin{oz}
+thread ... end
+\end{oz}
+&thread creation\\
 
 \bottomrule
 \end{longtable}
