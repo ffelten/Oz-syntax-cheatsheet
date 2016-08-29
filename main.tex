@@ -13,7 +13,7 @@
 \usepackage[table]{xcolor}
 
 \pagestyle{fancy}
-\fancyhf{}
+\fancyhf{} %Clean header and footer 
 \rhead{Last compiled: \today}
 \lhead{Université Catholique de Louvain}
 \rfoot{\thepage}
@@ -54,30 +54,31 @@
 \end{center}
 
 This document is a non-exhaustive reminder of the syntax of the Oz programming language. It is always possible to improve it and your help is therefore welcome -- just submit an issue on the link below and we will modify the document. Source code and the latest version of the pdf can be found at the following address:
-\begin{center}
 \url{https://github.com/some-github/a-wonderful-link}
-\end{center}
 %TODO Change the url (other github)
 
 \renewcommand*{\arraystretch}{1.5}
 \begin{longtable}{l r}
 \toprule[0.2em]
 \multicolumn{1}{l}{\textbf{Keywords}} & \textbf{Meaning}\\
-\midrule
+\midrule[0.3mm]
 
 
  %%%%% 
 \multicolumn{2}{c}{\textbf{Basic statements}}\\
+\midrule[0.3mm]
 
 \begin{oz}
 Var = ...
 \end{oz}
-&variable assignment\\
+&variable assignment (only single-assignment)\\
+\hline
 
 \begin{oz}
 declare Var 
 \end{oz}
 &global declaration of Var\\
+\hline
  
 \begin{oz}
 local Var in 
@@ -85,6 +86,7 @@ local Var in
 end
 \end{oz}
 &local declaration\\
+\hline
  
  
 \begin{oz}
@@ -93,6 +95,7 @@ fun {FunName Arg1 ... ArgN}
 end
 \end{oz}
 &function definition\\
+\hline
  
 \begin{oz}
 proc {ProcName Arg1 ... ArgN}
@@ -100,6 +103,7 @@ proc {ProcName Arg1 ... ArgN}
 end
 \end{oz}
 &procedure definition\\
+\hline
 
 \begin{oz}
 if Condition1 then ...
@@ -108,6 +112,7 @@ else ...
 end
 \end{oz}
 &if \dots else if \dots else \dots \\
+\hline
  
  
 \begin{oz}
@@ -121,60 +126,78 @@ end
 
 
 %%%%%
+\midrule[0.3mm]
 \multicolumn{2}{c}{\textbf{Booleans expressions and operators}}\\
+\midrule[0.3mm]
+
+
+
 \begin{oz}
 false 
 \end{oz}
 &false value\\
+\hline
  
 \begin{oz}
 true
 \end{oz}
 &true value\\
+\hline
  
 \begin{oz}
 andthen
 \end{oz}
-&logical and \\
+&logical AND \\
+\hline
  
 \begin{oz}
 orelse
 \end{oz}
-&logical or\\
+&logical OR\\
+\hline
  
 \begin{oz}
 ==
 \end{oz}
 &logical equality\\
+\hline
  
 \begin{oz}
 \=
 \end{oz}
 &logical inequality\\
+\hline
  
 \begin{oz}
 {Not [Your Expression]}
 \end{oz}
-&logical not\\[0.4em]
- 
- 
+&logical NOT\\[0.4em]
+
+
 %%%%% 
+\midrule[0.3mm]
 \multicolumn{2}{c}{\textbf{Comparison operators}}\\
+\midrule[0.3mm]
+
+
 
 \begin{oz}
 <
 \end{oz}
 &less than\\
+\hline
  
 \begin{oz}
 =<
 \end{oz}
-&less than or equal to\\
+&less than or equal to (because $< $= is an arrow)\\
+\hline
  
 \begin{oz}
 >
 \end{oz}
 &greater than\\
+\hline
  
 \begin{oz}
 >=
@@ -183,71 +206,91 @@ orelse
 
 
 %%%%% 
+\midrule[0.3mm]
 \multicolumn{2}{c}{\textbf{Arithmetic operators}}\\
+\midrule[0.3mm]
+
+
+
 \begin{oz}
 +
 \end{oz}
 &addition\\
+\hline
  
 \begin{oz}
 -
 \end{oz}
 &subtraction\\
+\hline
  
 \begin{oz}
 *
 \end{oz}
 &multiplication\\
+\hline
  
 \begin{oz}
 /
 \end{oz}
 &division (for floating point numbers)\\
+\hline
  
 \begin{oz}
 div
 \end{oz}
 &division (for integers)\\
+\hline
  
 \begin{oz}
 mod
 \end{oz}
 &modulo\\
+\hline
  
 \begin{oz}
 {Pow A B}
 \end{oz}
 &$A^{B}$\\
+\hline
  
 \begin{oz}
 {Abs A}
 \end{oz}
 &absolute value of A\\
+\hline
 
 \begin{oz}
 E = ~1
 \end{oz}
-&unary negation\\[0.4em]
+&unary negation (because - is an operator) \\[0.4em]
+
  
-
-
+ 
  %%%%% 
+\midrule[0.3mm]
 \multicolumn{2}{c}{\textbf{Data structures}}\\
+\midrule[0.3mm]
+
+
 
 \begin{oz}
 S = "A string"
 \end{oz}
 & string declaration\\
+\hline
 
 \begin{oz}
 A = hELLO
 \end{oz}
 & atom declaration (with lowercase first letter)\\
+\hline
 
 \begin{oz}
 A = 'An atom'
 \end{oz}
 & same (with uppercase first letter and space)\\
+\hline
 
 
 
@@ -256,50 +299,88 @@ X = label(feature1:Field1
 		... 
 	  featureN:FieldN)
 \end{oz}
-&record structure \\
+&record structure (features and label are atoms) \\
+\hline
 
 \begin{oz}
 R.feature
 \end{oz}
 &access to the record's fields\\
+\hline
 
 \begin{oz}
 T = 1#2#3
 \end{oz}
 & common operator (T = '\#'(1:1 2:2 3:3))\\
+\hline
 
 \begin{oz}
 L = '|'(1:1 2:'|'(1:2 2:nil))
 \end{oz}
 & list structure\\
+\hline
 
 \begin{oz}
 L = 1|2|nil
 \end{oz}
 & a syntactic sugar to declare a list\\
+\hline
 
 \begin{oz}
 L = [1 2]
 \end{oz}
-& another syntactic sugar for list declaration\\
+& another syntactic sugar for list declaration\\[0.4em]
+
+
+
+ %%%%% 
+\midrule[0.3mm]
+\multicolumn{2}{c}{\textbf{Explicit state}}\\
+\midrule[0.3mm]
+
+
 
 \begin{oz}
 X = {NewCell Y}
 \end{oz}
 &cell creation (multiple assignment variable) \\
+\hline
 
 \begin{oz}
 @X
 \end{oz}
 & access to the cell's current content\\
+\hline
 
 \begin{oz}
 X := Z
 \end{oz}
-&changes the content of the cell \\[0.4em]
+&changes the content of the cell \\
+\hline
 
+\begin{oz}
+for X in L do 
+  ...
+end
+\end{oz}
+&foreach loop (used with lists)\\
+\hline
+
+\begin{oz}
+for X in 1..N do 
+  ...
+end
+\end{oz}
+&traditional for loop \\[0.4em]
+
+
+
+\midrule[0.3mm]
  %%%%% 
 \multicolumn{2}{c}{\textbf{Object-oriented programming}}\\
+\midrule[0.3mm]
+
+
 
 \begin{oz}
 class AClass
@@ -311,6 +392,7 @@ class AClass
 end
 \end{oz}
 &class definition\\
+\hline
 
 \begin{oz}
 X = {New AClass init('arg')}
@@ -318,13 +400,20 @@ X = {New AClass init('arg')}
 \end{oz}
 &object creation and use\\[0.4em]
 
+
+
+\midrule[0.3mm]
  %%%%% 
 \multicolumn{2}{c}{\textbf{Exceptions handling}}\\
+\midrule[0.3mm]
+
+
 
 \begin{oz}
 raise E end
 \end{oz}
 &throws an exception E \\
+\hline
 
 \begin{oz}
 try ... catch X then ... end
@@ -332,15 +421,20 @@ try ... catch X then ... end
 &catches a raised exception\\[0.4em]
 
 
+
+\midrule[0.3mm]
 %%%%% 
 \multicolumn{2}{c}{\textbf{Concurrent programming}}\\
+\midrule[0.3mm]
+
+
 
 \begin{oz}
 thread ... end
 \end{oz}
 &thread creation\\
 
-\bottomrule
+
 \end{longtable}
 
 
